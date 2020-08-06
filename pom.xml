@@ -9,7 +9,7 @@
 
     <description>JGSS API prototype</description>
 
-    <url>https://github.com/example/test</url>
+    <url>https://github.com/pragmasoft-ukraine/jgss-test</url>
 
     <licenses>
         <license>
@@ -25,19 +25,19 @@
     </organization>
 
     <scm>
-        <url>https://github.com/example/test</url>
-        <connection>git@github.com:example/test.git</connection>
-        <developerConnection>git@github.com:example/test.git</developerConnection>
+        <url>https://github.com/pragmasoft-ukraine/jgss-test</url>
+        <connection>git@github.com:pragmasoft-ukraine/jgss-test.git</connection>
+        <developerConnection>git@github.com:pragmasoft-ukraine/jgss-test.git</developerConnection>
     </scm>
 
     <issueManagement>
-        <system>Issues</system>
-        <url>https://github.com/example/test/issues</url>
+        <system>github</system>
+        <url>https://github.com/pragmasoft-ukraine/jgss-test/issues</url>
     </issueManagement>
 
     <ciManagement>
         <system>Pipelines</system>
-        <url>https://github.com/example/test/pipelines</url>
+        <url>https://github.com/pragmasoft-ukraine/jgss-test</url>
     </ciManagement>
 
     <contributors>
@@ -67,28 +67,16 @@
 
     <developers>
         <developer>
-            <id>somedev</id>
-            <email>some.developer@example.com</email>
-            <name>Some Developer</name>
-            <organization>Example Organization</organization>
-            <organizationUrl>http://example.com/</organizationUrl>
+            <id>zdv</id>
+            <email>pragmasoft@gmail.com</email>
+            <name>Dmytro Zemnytskyi</name>
+            <organization>Pragmasoft Ukraine</organization>
+            <organizationUrl>https://www.pragmasoft.com.ua</organizationUrl>
             <roles>
                 <role>architect</role>
                 <role>developer</role>
             </roles>
-            <timezone>Europe/Amsterdam</timezone>
-        </developer>
-        <developer>
-            <id>otherdev</id>
-            <email>other.developer@example.com</email>
-            <name>Other Developer</name>
-            <organization>Example Organization</organization>
-            <organizationUrl>http://example.com/</organizationUrl>
-            <roles>
-                <role>architect</role>
-                <role>developer</role>
-            </roles>
-            <timezone>Europe/Amsterdam</timezone>
+            <timezone>Europe/Kyiv</timezone>
         </developer>
     </developers>
 
