@@ -16,11 +16,11 @@ import org.ietf.jgss.GSSContext;
 import org.ietf.jgss.GSSManager;
 import org.ietf.jgss.Oid;
 
-public class HelloWorld {
-    static final Logger logger = Logger.getLogger(HelloWorld.class.getName());
+public class Main {
+    static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String... args) throws Exception {
-        logger.info("This is a module-using Hello World!");
+        logger.info("This is a module based Kerberos Client Server prototype");
         CallbackHandler callbackHandler = new TextCallbackHandler();
         var loginContext = new LoginContext("jgss-test", callbackHandler);
         loginContext.login();
