@@ -22,12 +22,12 @@ public class Main {
     public static void main(String... args) throws Exception {
         logger.info("This is a module based Kerberos Client Server prototype");
         CallbackHandler callbackHandler = new TextCallbackHandler();
-        var loginContext = new LoginContext("jgss-test", callbackHandler);
+        var loginContext = new LoginContext("client", callbackHandler);
         loginContext.login();
         var clientSubject = loginContext.getSubject();
         logSubject(clientSubject);
 
-        loginContext = new LoginContext("fna");
+        loginContext = new LoginContext("server");
         loginContext.login();
         var serviceSubject = loginContext.getSubject();
         logSubject(serviceSubject);
@@ -35,20 +35,21 @@ public class Main {
 
         final GSSManager gssManager = GSSManager.getInstance();
         final Oid krb5Oid = new Oid("1.2.840.113554.1.2.2");
-        final var serverName = gssManager.createName("fna/zdv-office-ubuntu", null);
+        final var serverName = gssManager.createName("fna/krb5.local", null);
 
         var doGetClientContext = new PrivilegedExceptionAction<GSSContext>() {
 
             @Override
             public GSSContext run() throws Exception {
-                return gssManager.createContext(serverName, krb5Oid, null, GSSContext.DEFAULT_LIFETIME);
+                var ctx = gssManager.createContext(serverName, krb5Oid, null, GSSContext.DEFAULT_LIFETIME);
+                byte[] token = new byte[0];
+                token = ctx.initSecContext(token, 0, token.length);
+                return ctx;
             }
 
         };
 
         var clientCtx = Subject.doAs(clientSubject, doGetClientContext);
-        byte[] token = new byte[0];
-        token = clientCtx.initSecContext(token, 0, token.length);
         logger.info("gss context " + clientCtx.getSrcName() + " > " + clientCtx.getTargName() + " is "
                 + (clientCtx.isEstablished() ? "" : "not") + " established");
         clientCtx.dispose();

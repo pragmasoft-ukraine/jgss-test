@@ -2,6 +2,7 @@ package ua.com.pragmasoft.test.jgss;
 
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 
 import com.sun.security.auth.callback.TextCallbackHandler; // NOSONAR 
 
@@ -14,12 +15,16 @@ public class KrbClient implements Runnable {
 
     @Override
     public void run() {
-        log.info("This is a module based Kerberos Client Server prototype");
-        CallbackHandler callbackHandler = new TextCallbackHandler();
-        var loginContext = new LoginContext("jgss-test", callbackHandler);
-        loginContext.login();
-        var clientSubject = loginContext.getSubject();
-        logSubject(clientSubject);
+        try {
+            log.info("This is a module based Kerberos Client Server prototype");
+            CallbackHandler callbackHandler = new TextCallbackHandler();
+            var loginContext = new LoginContext("jgss-test", callbackHandler);
+            loginContext.login();
+            var clientSubject = loginContext.getSubject();
+            // logSubject(clientSubject);
+        } catch (LoginException e) {
+            throw new IllegalStateException(e);
+        }
     }
     
 }
